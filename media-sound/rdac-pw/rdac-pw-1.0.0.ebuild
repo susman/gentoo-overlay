@@ -10,14 +10,14 @@ if [[ ${ARCH} != amd64 ]]; then
 	ZIG_NEEDS_LLVM=1
 fi
 
-inherit multilib zig
-
-DESCRIPTION="PipeWire module for lossless WavPack-over-SCTP streaming with mDNS discovery"
-HOMEPAGE="https://github.com/susman/rdac-pw"
-
-declare -g -r -A ZBS_DEPENDENCIES=(
+declare -r -A ZBS_DEPENDENCIES=(
 	[sctp_wps-1.0.0-KctmCCAkfQBAGP8ceLcr_mI_bOBVOpcgM-lGX4445koi.tar.gz]='https://github.com/susman/sctp-wps/releases/download/v1.0.0/sctp-wps-v1.0.0.tar.gz'
 )
+
+inherit multilib zig
+
+DESCRIPTION="Remote DAC PipeWire module"
+HOMEPAGE="https://github.com/susman/rdac-pw"
 
 SRC_URI="
 	https://github.com/susman/rdac-pw/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
@@ -28,7 +28,6 @@ LICENSE="BSD-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
-# Appended to the zig/zig-bin BDEPEND set by the eclass (preserves [llvm(+)]).
 BDEPEND+="
 	virtual/pkgconfig
 	media-sound/wavpack-stream
@@ -42,9 +41,7 @@ RDEPEND="
 "
 
 src_configure() {
-	local my_zbs_args=(
-		--release=fast
-	)
+	local my_zbs_args=( --release=fast )
 	zig_src_configure
 }
 
