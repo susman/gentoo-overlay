@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>igor@susman.dev</email>
+		<name>Igor Susman</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/susman/rdac-pw/issues</bugs-to>
+		<remote-id type="github">susman/rdac-pw</remote-id>
+	</upstream>
+</pkgmetadata>
